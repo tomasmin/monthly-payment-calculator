@@ -33,7 +33,17 @@ describe('klix-credit-badge', () => {
       <klix-credit-badge amount="34999" b="some-merchant-identifier" language="en">
         <mock:shadow-root>
           <div class="container">
-            36 payments of €9.73.
+            <div class="logo">
+              <img alt="klix-logo" height="20" src="https://klix.app/wp-content/themes/klix/static/img/svg/logo.svg">
+            </div>
+            <div class="text-wrapper">
+              <p>
+                36 payments of €9.73.
+                <button class="link">
+                  Learn more
+                </button>
+              </p>
+            </div>
           </div>
         </mock:shadow-root>
       </klix-credit-badge>
@@ -50,7 +60,17 @@ describe('klix-credit-badge', () => {
       <klix-credit-badge amount="34999" b="some-merchant-identifier" language="en">
         <mock:shadow-root>
           <div class="container">
-            3 interest-free payments of €116.67.
+            <div class="logo">
+              <img alt="klix-logo" height="20" src="https://klix.app/wp-content/themes/klix/static/img/svg/logo.svg">
+            </div>
+            <div class="text-wrapper">
+              <p>
+                3 interest-free payments of €116.67.
+                <button class="link">
+                  Learn more
+                </button>
+              </p>
+            </div>
           </div>
         </mock:shadow-root>
       </klix-credit-badge>
