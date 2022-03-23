@@ -65,39 +65,35 @@ export class KlixCreditBadge {
 
   render() {
     if (this.responseOk) {
+      let text;
       if (this.financingProductType === 'GRACE_PERIOD') {
-        return (
-          <div class="container">
-            <div class="logo">
-              <img src={this.logoUrl} height="20" alt="klix-logo" />
-            </div>
-            <div class="text-wrapper">
-              <p>
-                {this.gracePeriodPaymentCount} interest-free payments of &euro;{this.monthlySplitPaymentAmount}.{' '}
-                <a class="link" href={this.learnMoreUrl} target="_blank">
-                  Learn more
-                </a>
-              </p>
-            </div>
-          </div>
+        text = (
+          <span>
+            {this.gracePeriodPaymentCount} interest-free payments of &euro;{this.monthlySplitPaymentAmount}.
+          </span>
         );
       } else {
-        return (
-          <div class="container">
-            <div class="logo">
-              <img src={this.logoUrl} height="20" alt="klix-logo" />
-            </div>
-            <div class="text-wrapper">
-              <p>
-                {this.numberOfPayments} payments of &euro;{this.monthlyPaymentStartingFromAmount}.{' '}
-                <a class="link" href={this.learnMoreUrl} target="_blank">
-                  Learn more
-                </a>
-              </p>
-            </div>
-          </div>
+        text = (
+          <span>
+            {this.numberOfPayments} payments of &euro;{this.monthlyPaymentStartingFromAmount}.
+          </span>
         );
       }
+      return (
+        <div class="container">
+          <div class="logo">
+            <img src={this.logoUrl} height="20" alt="klix-logo" />
+          </div>
+          <div class="text-wrapper">
+            <p>
+              {text}{' '}
+              <a class="link" href={this.learnMoreUrl} target="_blank">
+                Learn more
+              </a>
+            </p>
+          </div>
+        </div>
+      );
     }
   }
 }

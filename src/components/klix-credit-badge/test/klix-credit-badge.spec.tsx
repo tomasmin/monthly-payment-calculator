@@ -38,7 +38,9 @@ describe('klix-credit-badge', () => {
             </div>
             <div class="text-wrapper">
               <p>
-                36 payments of €9.73.
+                <span>
+                  36 payments of €9.73.
+                </span>
                 <a class="link" href="//klix.app" target="_blank">
                   Learn more
                 </a>
@@ -65,7 +67,9 @@ describe('klix-credit-badge', () => {
             </div>
             <div class="text-wrapper">
               <p>
-                3 interest-free payments of €116.67.
+                <span>
+                  3 interest-free payments of €116.67.
+                </span>
                 <a class="link" href="//klix.app" target="_blank">
                   Learn more
                 </a>
