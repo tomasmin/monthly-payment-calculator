@@ -1,4 +1,5 @@
 import { Component, h, Prop, State } from '@stencil/core';
+import { translate } from '../../utils/translations.util';
 
 @Component({
   tag: 'klix-credit-badge',
@@ -27,7 +28,7 @@ export class KlixCreditBadge {
 
   componentWillLoad() {
     if (this.amount >= 5000) {
-      fetch(`https://api.stage.klix.app/financing/monthly-payment?amount=${this.amount}&language=${this.language}&b=${this.b}`)
+      fetch(`https://api.stage.klix.app/financing/monthly-payment?amount=${this.amount}&language=en&b=${this.b}`)
         .then((response: Response) => {
           if (response.ok) {
             this.responseOk = true;
@@ -48,16 +49,6 @@ export class KlixCreditBadge {
         .catch(error => {
           console.log(error);
         });
-
-      // this.responseOk = true;
-      // this.numberOfPayments = 36;
-      // this.gracePeriodPaymentCount = 3;
-      // this.principalAmount = 349.99;
-      // this.monthlySplitPaymentAmount = 116.67;
-      // this.downPaymentAmount = 0;
-      // this.monthlyPaymentStartingFromAmount = 9.73;
-      // this.interestRate = 15.0;
-      // this.financingProductType = 'GRACE_PERIOD';
     } else {
       console.log('Pay Later is not offered for purchases that are less than 50 EUR.');
     }
@@ -69,13 +60,13 @@ export class KlixCreditBadge {
       if (this.financingProductType === 'GRACE_PERIOD') {
         text = (
           <span>
-            {this.gracePeriodPaymentCount} interest-free payments of &euro;{this.monthlySplitPaymentAmount}.
+            {this.gracePeriodPaymentCount} {translate('textGracePeriod', this.language)} &euro;{this.monthlySplitPaymentAmount}.
           </span>
         );
       } else {
         text = (
           <span>
-            {this.numberOfPayments} payments of &euro;{this.monthlyPaymentStartingFromAmount}.
+            {this.numberOfPayments} {translate('text', this.language)} &euro;{this.monthlyPaymentStartingFromAmount}.
           </span>
         );
       }
@@ -88,7 +79,7 @@ export class KlixCreditBadge {
             <p>
               {text}{' '}
               <a class="link" href={this.learnMoreUrl} target="_blank">
-                Learn more
+                {translate('learnMore', this.language)}
               </a>
             </p>
           </div>

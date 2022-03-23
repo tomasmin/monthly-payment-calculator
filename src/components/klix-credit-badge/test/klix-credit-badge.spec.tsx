@@ -1,5 +1,6 @@
 import { newSpecPage, mockFetch } from '@stencil/core/testing';
 import { KlixCreditBadge } from '../klix-credit-badge';
+import { translate } from '../../../utils/translations.util';
 
 const MOCK_RESPONSE = {
   numberOfPayments: 36,
@@ -103,5 +104,9 @@ describe('klix-credit-badge', () => {
   it('has learn more url', async () => {
     const badge = new KlixCreditBadge();
     expect(badge.learnMoreUrl).toBe('//klix.app');
+  });
+
+  it('translates in English by default', async () => {
+    expect(translate('text', 'xx')).toBe('payments of');
   });
 });
