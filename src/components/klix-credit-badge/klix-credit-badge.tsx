@@ -10,15 +10,20 @@ export class KlixCreditBadge {
   @Prop() language: string;
   @Prop() b: string;
 
-  @State() numberOfPayments: number;
-  @State() gracePeriodPaymentCount: number;
-  @State() principalAmount: number;
-  @State() monthlySplitPaymentAmount: number;
-  @State() downPaymentAmount: number;
-  @State() monthlyPaymentStartingFromAmount: number;
-  @State() interestRate: number;
-  @State() financingProductType: string;
+  numberOfPayments: number;
+  gracePeriodPaymentCount: number;
+  principalAmount: number;
+  monthlySplitPaymentAmount: number;
+  downPaymentAmount: number;
+  monthlyPaymentStartingFromAmount: number;
+  interestRate: number;
+  financingProductType: string;
   @State() responseOk: boolean = false;
+  learnMoreUrl: string = '//klix.app';
+
+  // Logo should be a local asset but due to Jest being unable to load .svg files
+  // without additional configuration, leaving it like this as a placeholder
+  logoUrl = 'https://klix.app/wp-content/themes/klix/static/img/svg/logo.svg';
 
   componentWillLoad() {
     if (this.amount >= 5000) {
@@ -54,7 +59,6 @@ export class KlixCreditBadge {
       // this.interestRate = 15.0;
       // this.financingProductType = 'GRACE_PERIOD';
     } else {
-      // TODO: Do we need to display something if amount < 5000?
       console.log('Pay Later is not offered for purchases that are less than 50 EUR.');
     }
   }
@@ -65,11 +69,14 @@ export class KlixCreditBadge {
         return (
           <div class="container">
             <div class="logo">
-              <img src="https://klix.app/wp-content/themes/klix/static/img/svg/logo.svg" height="20" alt="klix-logo" />
+              <img src={this.logoUrl} height="20" alt="klix-logo" />
             </div>
             <div class="text-wrapper">
               <p>
-                {this.gracePeriodPaymentCount} interest-free payments of &euro;{this.monthlySplitPaymentAmount}. <button class="link">Learn more</button>
+                {this.gracePeriodPaymentCount} interest-free payments of &euro;{this.monthlySplitPaymentAmount}.{' '}
+                <a class="link" href={this.learnMoreUrl} target="_blank">
+                  Learn more
+                </a>
               </p>
             </div>
           </div>
@@ -78,11 +85,14 @@ export class KlixCreditBadge {
         return (
           <div class="container">
             <div class="logo">
-              <img src="https://klix.app/wp-content/themes/klix/static/img/svg/logo.svg" height="20" alt="klix-logo" />
+              <img src={this.logoUrl} height="20" alt="klix-logo" />
             </div>
             <div class="text-wrapper">
               <p>
-                {this.numberOfPayments} payments of &euro;{this.monthlyPaymentStartingFromAmount}. <button class="link">Learn more</button>
+                {this.numberOfPayments} payments of &euro;{this.monthlyPaymentStartingFromAmount}.{' '}
+                <a class="link" href={this.learnMoreUrl} target="_blank">
+                  Learn more
+                </a>
               </p>
             </div>
           </div>

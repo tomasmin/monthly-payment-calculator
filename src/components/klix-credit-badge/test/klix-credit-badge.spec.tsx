@@ -39,9 +39,9 @@ describe('klix-credit-badge', () => {
             <div class="text-wrapper">
               <p>
                 36 payments of €9.73.
-                <button class="link">
+                <a class="link" href="//klix.app" target="_blank">
                   Learn more
-                </button>
+                </a>
               </p>
             </div>
           </div>
@@ -66,9 +66,9 @@ describe('klix-credit-badge', () => {
             <div class="text-wrapper">
               <p>
                 3 interest-free payments of €116.67.
-                <button class="link">
+                <a class="link" href="//klix.app" target="_blank">
                   Learn more
-                </button>
+                </a>
               </p>
             </div>
           </div>
@@ -89,5 +89,15 @@ describe('klix-credit-badge', () => {
       </klix-credit-badge>
     `);
     expect(consoleSpy).toHaveBeenCalledWith('Pay Later is not offered for purchases that are less than 50 EUR.');
+  });
+
+  it('responseOk should be false', async () => {
+    const badge = new KlixCreditBadge();
+    expect(badge.responseOk).toBe(false);
+  });
+
+  it('has learn more url', async () => {
+    const badge = new KlixCreditBadge();
+    expect(badge.learnMoreUrl).toBe('//klix.app');
   });
 });
