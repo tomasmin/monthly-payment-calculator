@@ -1,0 +1,12 @@
+:host {
+  display: block;
+}
+
+.container {
+  background-color: #ffffff;
+  border-style: solid;
+  border-color: #eae7e4;
+  border-width: 1px;
+  padding: 14px;
+  max-width: 400px;
+}
