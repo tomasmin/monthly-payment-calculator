@@ -18,3 +18,36 @@ To run the unit tests for the components, run:
 ```bash
 npm test
 ```
+
+## Integration
+
+### Prerequisites
+
+The component should be first published to npm.
+
+### Via script tag
+
+```html
+<html>
+  <head>
+    <script src="link to npm package"></script>
+  </head>
+  <body>
+    <klix-credit-badge amount="34999" language="en" b="55b7d52b-020e-4143-bc69-3292b5002cf2"></klix-credit-badge>
+  </body>
+</html>
+```
+
+### Via Node Modules
+
+- Run `npm install klix-credit-badge --save`
+- Put a script tag similar to this `<script type='module' src='node_modules/klix-credit-badge/dist/klix-credit-badge.esm.js'></script>` in the head of your index.html
+- Then you can use the element anywhere in your template, JSX, html etc
+
+### Attributes
+
+| Attribute  | Description                 | Default |
+| ---------- | --------------------------- |  ------ |
+| `amount`   | Amount in EUR cents         |         |
+| `b`        | Merchant identifier         |         |
+| `language` | Calculator display language | `'en'`  |
